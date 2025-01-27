@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyapar Book - Financial Assistant for Small Businesses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Vyapar Book</div>
+            <div class="user-info">
+                <span id="businessName">Your Business</span>
+                <img src="/api/placeholder/40/40" alt="Profile" class="profile-pic">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="income">Income/Expense</button>
+                <button class="tab-btn" data-tab="customer">Customer</button>
+                <button class="tab-btn" data-tab="supplier">Supplier</button>
+                <button class="tab-btn" data-tab="inventory">Inventory</button>
+            </div>
+
+            <!-- Income/Expense Tab -->
+            <div class="tab-content active" id="income-content">
+                <div class="card">
+                    <h2>Income & Expense Overview</h2>
+                    <div class="transaction-form">
+                        <input type="text" id="transactionDescription" placeholder="Description">
+                        <input type="number" id="transactionAmount" placeholder="Amount">
+                        <select id="transactionType">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <button onclick="addTransaction()">Add Transaction</button>
+                    </div>
+                    <div class="transactions-list">
+                        <h3>Recent Transactions</h3>
+                        <div id="transactionsList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Tab -->
+            <div class="tab-content" id="customer-content">
+                <div class="card">
+                    <h2>Customer Management</h2>
+                    <div class="customer-form">
+                        <input type="text" id="customerName" placeholder="Customer Name">
+                        <input type="tel" id="customerPhone" placeholder="Phone Number">
+                        <input type="text" id="customerAddress" placeholder="Address">
+                        <button onclick="addCustomer()">Add Customer</button>
+                    </div>
+                    <div class="customers-list">
+                        <h3>Customer List</h3>
+                        <div id="customersList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supplier Tab -->
+            <div class="tab-content" id="supplier-content">
+                <div class="card">
+                    <h2>Supplier Management</h2>
+                    <div class="supplier-form">
+                        <input type="text" id="supplierName" placeholder="Supplier Name">
+                        <input type="tel" id="supplierPhone" placeholder="Phone Number">
+                        <input type="text" id="supplierProduct" placeholder="Product/Service">
+                        <button onclick="addSupplier()">Add Supplier</button>
+                    </div>
+                    <div class="suppliers-list">
+                        <h3>Supplier List</h3>
+                        <div id="suppliersList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Tab -->
+            <div class="tab-content" id="inventory-content">
+                <div class="card">
+                    <h2>Inventory Management</h2>
+                    <div class="inventory-form">
+                        <input type="text" id="itemName" placeholder="Item Name">
+                        <input type="number" id="itemQuantity" placeholder="Quantity">
+                        <input type="number" id="itemPrice" placeholder="Price per unit">
+                        <button onclick="addInventoryItem()">Add Item</button>
+                    </div>
+                    <div class="inventory-list">
+                        <h3>Current Inventory</h3>
+                        <div id="inventoryList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Vyapar Book. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
