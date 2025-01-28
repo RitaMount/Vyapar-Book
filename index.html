@@ -7,81 +7,65 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <button class="nav-icon-btn" id="businessBtn">
-                <img src="https://i.imgur.com/Dw703pS.png" alt="Business" class="nav-icon">
+    <div class="header">
+        <div class="header-content">
+            <button class="icon-button" id="businessBtn">
+                <img src="https://i.imgur.com/Dw703pS.png" alt="Business" class="icon-small">
             </button>
-            <h1 class="nav-title">MuneemJi</h1>
-            <button class="nav-icon-btn" id="userBtn">
-                <img src="https://i.imgur.com/y43MXVr.png" alt="User" class="nav-icon">
+            <h1 class="title">MuneemJi</h1>
+            <button class="icon-button" id="userBtn">
+                <img src="https://i.imgur.com/y43MXVr.png" alt="User" class="icon-small">
             </button>
-        </div>
-    </nav>
-
-    <div class="dropdown business-dropdown" id="businessDropdown">
-        <div class="dropdown-content">
-            <div class="business-name">Your Business Name</div>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-link">
-                <span>Create New Book</span>
-                <span class="arrow">›</span>
-            </a>
         </div>
     </div>
 
-    <div class="dropdown user-dropdown" id="userDropdown">
-        <div class="dropdown-content">
-            <a href="#" class="dropdown-link">
-                <span>My Profile</span>
-                <span class="arrow">›</span>
-            </a>
-            <a href="#" class="dropdown-link">
-                <span>Log out</span>
-                <span class="arrow">›</span>
-            </a>
-        </div>
+    <div class="dropdown" id="businessDropdown">
+        <div class="dropdown-item">Your Business Name</div>
+        <hr>
+        <a href="#" class="dropdown-item with-arrow">Create New Book</a>
     </div>
 
-    <main class="main-content">
-        <!-- Main content will go here -->
-    </main>
+    <div class="dropdown" id="userDropdown">
+        <a href="#" class="dropdown-item with-arrow">My Profile</a>
+        <a href="#" class="dropdown-item with-arrow">Log out</a>
+    </div>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <a href="#" class="footer-item">
-                <div class="footer-icon-wrapper">
-                    <img src="https://i.imgur.com/VDf1VCd.png" alt="Income/Expense" class="footer-icon">
-                </div>
-                <span class="footer-label">Income/<br>Expense</span>
-            </a>
-            <a href="#" class="footer-item">
-                <div class="footer-icon-wrapper">
-                    <img src="https://i.imgur.com/H87CI12.png" alt="Inventory" class="footer-icon">
-                </div>
-                <span class="footer-label">Inventory</span>
-            </a>
-            <a href="#" class="footer-item">
-                <div class="footer-icon-wrapper">
-                    <img src="https://i.imgur.com/pOnKgiB.png" alt="Staff" class="footer-icon">
-                </div>
-                <span class="footer-label">Staff</span>
-            </a>
-            <a href="#" class="footer-item">
-                <div class="footer-icon-wrapper">
-                    <img src="https://i.imgur.com/kws5JY2.png" alt="Suppliers" class="footer-icon">
-                </div>
-                <span class="footer-label">Suppliers</span>
-            </a>
-            <a href="#" class="footer-item">
-                <div class="footer-icon-wrapper">
-                    <img src="https://i.imgur.com/htaNyFB.png" alt="Customers" class="footer-icon">
-                </div>
-                <span class="footer-label">Customers</span>
-            </a>
-        </div>
-    </footer>
+    <div class="content">
+        <!-- Main content here -->
+    </div>
 
+    <div class="footer">
+        <a href="#" class="footer-item">
+            <div class="icon-circle">
+                <img src="https://i.imgur.com/VDf1VCd.png" alt="Income/Expense" class="icon">
+            </div>
+            <span>Income/Expense</span>
+        </a>
+        <a href="#" class="footer-item">
+            <div class="icon-circle">
+                <img src="https://i.imgur.com/H87CI12.png" alt="Inventory" class="icon">
+            </div>
+            <span>Inventory</span>
+        </a>
+        <a href="#" class="footer-item">
+            <div class="icon-circle">
+                <img src="https://i.imgur.com/pOnKgiB.png" alt="Staff" class="icon">
+            </div>
+            <span>Staff</span>
+        </a>
+        <a href="#" class="footer-item">
+            <div class="icon-circle">
+                <img src="https://i.imgur.com/kws5JY2.png" alt="Suppliers" class="icon">
+            </div>
+            <span>Suppliers</span>
+        </a>
+        <a href="#" class="footer-item">
+            <div class="icon-circle">
+                <img src="https://i.imgur.com/htaNyFB.png" alt="Customers" class="icon">
+            </div>
+            <span>Customers</span>
+        </a>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
