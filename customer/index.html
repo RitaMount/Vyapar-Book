@@ -7,51 +7,109 @@
     <meta name="theme-color" content="#780000">
     <title>Customer Management</title>
     
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Custom styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Section -->
     <div class="header">
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
         <div class="logo">Customer Management</div>
     </div>
 
-    <!-- Main Content Area -->
     <div class="main-content">
-        <!-- Add Customer Button -->
-        <button id="addCustomerBtn" class="add-customer-btn">+ Add Customer</button>
-
-        <!-- Customer List -->
-        <div id="customerList" class="customer-list">
-            <!-- Customer details will be dynamically added here -->
+        <div id="emptyState" class="empty-state">
+            <i class="fas fa-users empty-icon"></i>
+            <p>No customers added yet</p>
+            <button id="addCustomerBtn" class="add-customer-btn">+ Add Customer</button>
         </div>
 
-        <!-- Floating Add Customer Form -->
-        <div id="addCustomerForm" class="add-customer-form">
-            <h3>Add Customer Details</h3>
-            <input type="text" id="customerName" placeholder="Customer Name" required>
-            <input type="text" id="customerMobile" placeholder="Mobile Number" required>
-            <textarea id="customerNote" placeholder="Short Note (Optional)"></textarea>
-            <button id="submitCustomerBtn">Submit</button>
+        <div id="customerList" class="customer-list hidden">
+            <button id="addCustomerBtnList" class="add-customer-btn">+ Add Customer</button>
+            <div id="customerListContent"></div>
         </div>
 
-        <!-- Customer Details Screen -->
-        <div id="customerDetailsScreen" class="customer-details-screen">
-            <h2 id="customerDetailsName"></h2>
-            <div id="customerEntries">
-                <!-- Entries will be dynamically added here -->
+        <div id="addCustomerForm" class="modal">
+            <div class="modal-content">
+                <h3>Add Customer Details</h3>
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name*</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerMobile">Mobile Number*</label>
+                        <input type="tel" id="customerMobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerNote">Short Note (Optional)</label>
+                        <textarea id="customerNote"></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" id="cancelCustomerBtn" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Customer</button>
+                    </div>
+                </form>
             </div>
+        </div>
+
+        <div id="customerDetails" class="customer-details hidden">
+            <div class="customer-header">
+                <h2 id="customerDetailsName"></h2>
+                <p id="customerDetailsMobile"></p>
+                <p id="customerDetailsNote" class="note"></p>
+            </div>
+            
+            <div class="balance-summary">
+                <div class="balance-item received">
+                    <span>Total Received</span>
+                    <span id="totalReceived">₹0</span>
+                </div>
+                <div class="balance-item pending">
+                    <span>Total Pending</span>
+                    <span id="totalPending">₹0</span>
+                </div>
+            </div>
+
+            <div class="entries-list" id="entriesList">
+                <h3>Transaction History</h3>
+                <div id="entriesContent"></div>
+            </div>
+
             <div class="action-buttons">
-                <button id="moneyReceivedBtn" class="green-btn">Money Received</button>
-                <button id="moneyPendingBtn" class="red-btn">Money Pending</button>
+                <button id="moneyReceivedBtn" class="action-btn received-btn">
+                    <i class="fas fa-plus-circle"></i>
+                    Money Received
+                </button>
+                <button id="moneyPendingBtn" class="action-btn pending-btn">
+                    <i class="fas fa-clock"></i>
+                    Money Pending
+                </button>
+            </div>
+        </div>
+
+        <div id="transactionModal" class="modal">
+            <div class="modal-content">
+                <h3 id="transactionTitle"></h3>
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label for="transactionAmount">Amount*</label>
+                        <input type="number" id="transactionAmount" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="transactionNote">Note (Optional)</label>
+                        <textarea id="transactionNote"></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" id="cancelTransactionBtn" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Transaction</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
