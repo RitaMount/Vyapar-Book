@@ -13,7 +13,7 @@ body {
     background-color: #780000;
     padding: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
@@ -25,6 +25,66 @@ body {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    flex: 1;
+    text-align: center;
+}
+
+.circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1001;
+    transition: background-color 0.3s ease;
+}
+
+.circle-button:hover {
+    background: #e9ecef;
+}
+
+.dropdown {
+    position: fixed;
+    top: 70px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    min-width: 200px;
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+.dropdown.right {
+    right: 1rem;
+}
+
+.dropdown.left {
+    left: 1rem;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+}
+
+.divider {
+    height: 1px;
+    background: #e9ecef;
+    margin: 0.5rem 0;
 }
 
 .main-content {
@@ -33,107 +93,87 @@ body {
     min-height: calc(100vh - 140px);
 }
 
-.add-customer-btn {
-    background-color: #780000;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+.content-placeholder {
+    text-align: center;
+    padding: 2rem;
+}
+
+.content-placeholder h1 {
+    color: #333;
     margin-bottom: 1rem;
 }
 
-.add-customer-form {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 1001;
+.content-placeholder p {
+    color: #666;
 }
 
-.add-customer-form input, .add-customer-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.add-customer-form button {
+.footer {
     background-color: #780000;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.customer-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.customer-item {
-    background: white;
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    cursor: pointer;
-}
-
-.customer-details-screen {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    padding: 1rem;
-    z-index: 1002;
-}
-
-.customer-details-screen h2 {
-    margin-bottom: 1rem;
-}
-
-.entry-item {
-    background: #f8f9fa;
     padding: 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-}
-
-.action-buttons {
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
+    text-align: center;
+    z-index: 999;
+}
+
+.footer-buttons {
     display: flex;
     justify-content: space-around;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    align-items: center;
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-.green-btn {
-    background-color: green;
-    color: white;
+.footer-button {
+    text-decoration: none;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.footer-button:hover {
+    transform: translateY(-5px);
+}
+
+.footer-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.footer-button:hover .footer-circle {
+    background: #e9ecef;
+}
+
+.footer-circle i {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.footer-text {
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.toggle-footer {
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    background: none;
+    color: white;
+    font-size: 1.5rem;
     cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
-.red-btn {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border
+.toggle-footer:hover {
+    transform: translateY(-2px);
+}
