@@ -1,29 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const businessBtn = document.getElementById('businessBtn');
     const userBtn = document.getElementById('userBtn');
     const businessDropdown = document.getElementById('businessDropdown');
     const userDropdown = document.getElementById('userDropdown');
 
-    function toggleDropdown(dropdown, otherDropdown) {
-        if (dropdown.style.display === 'block') {
-            dropdown.style.display = 'none';
-        } else {
-            dropdown.style.display = 'block';
-            otherDropdown.style.display = 'none';
-        }
-    }
+    const toggleDropdown = (dropdown, otherDropdown) => {
+        const isVisible = dropdown.style.display === 'block';
+        dropdown.style.display = isVisible ? 'none' : 'block';
+        otherDropdown.style.display = 'none';
+    };
 
-    businessBtn.addEventListener('click', function(e) {
+    businessBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleDropdown(businessDropdown, userDropdown);
     });
 
-    userBtn.addEventListener('click', function(e) {
+    userBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleDropdown(userDropdown, businessDropdown);
     });
 
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', (e) => {
         if (!businessBtn.contains(e.target) && !businessDropdown.contains(e.target)) {
             businessDropdown.style.display = 'none';
         }
