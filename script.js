@@ -1,4 +1,3 @@
-// script.js
 document.getElementById('businessBtn').addEventListener('click', function(event) {
     event.stopPropagation();
     const dropdown = document.getElementById('businessDropdown');
