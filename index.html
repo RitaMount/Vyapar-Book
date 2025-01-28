@@ -3,106 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MuneemJi - Business Management Application">
+    <meta name="theme-color" content="#780000">
     <title>MuneemJi</title>
+    
+    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
-        <button class="circle-button" id="businessBtn">
+        <button class="circle-button" id="businessBtn" aria-label="Business Menu">
             <i class="fas fa-store"></i>
         </button>
         <div class="logo">MuneemJi</div>
-        <button class="circle-button" id="userBtn">
+        <button class="circle-button" id="userBtn" aria-label="User Menu">
             <i class="fas fa-user"></i>
         </button>
     </div>
 
-    <div class="dropdown left" id="businessDropdown">
-        <div class="dropdown-item">My Business</div>
+    <!-- Business Dropdown Menu -->
+    <div class="dropdown left" id="businessDropdown" aria-label="Business Options">
+        <a href="#" class="dropdown-item">My Business Book</a>
         <div class="divider"></div>
         <a href="#" class="dropdown-item">+ Create New Business Book</a>
     </div>
 
-    <div class="dropdown right" id="userDropdown">
+    <!-- User Dropdown Menu -->
+    <div class="dropdown right" id="userDropdown" aria-label="User Options">
         <a href="#" class="dropdown-item">My Profile</a>
+        <div class="divider"></div>
         <a href="#" class="dropdown-item">Log Out</a>
     </div>
 
+    <!-- Main Content Area -->
     <div class="main-content">
-        <!-- Main content goes here -->
+        <!-- Content will be dynamically loaded here -->
+        <div class="content-placeholder">
+            <h1>Welcome to MuneemJi</h1>
+            <p>Select an option from the menu to get started.</p>
+        </div>
     </div>
 
+    <!-- Footer Section -->
     <div class="footer" id="footer">
-        <button class="toggle-footer" id="toggleFooterBtn">^</button>
+        <!-- Footer Toggle Button -->
+        <button class="toggle-footer" id="toggleFooterBtn" aria-label="Toggle Footer Menu">^</button>
+        
+        <!-- Footer Navigation Buttons -->
         <div class="footer-buttons" id="footerButtons">
-            <a href="#" class="footer-button">
-                <div class="footer-circle"><i class="fas fa-wallet"></i></div>
+            <!-- Income/Expense Button -->
+            <a href="#" class="footer-button" aria-label="Income and Expense">
+                <div class="footer-circle">
+                    <i class="fas fa-wallet"></i>
+                </div>
                 <span class="footer-text">Income/<br>Expense</span>
             </a>
-            <a href="#" class="footer-button">
-                <div class="footer-circle"><i class="fas fa-box"></i></div>
+
+            <!-- Inventory Button -->
+            <a href="#" class="footer-button" aria-label="Inventory">
+                <div class="footer-circle">
+                    <i class="fas fa-box"></i>
+                </div>
                 <span class="footer-text">Inventory</span>
             </a>
-            <a href="#" class="footer-button">
-                <div class="footer-circle"><i class="fas fa-users"></i></div>
+
+            <!-- Staff Button -->
+            <a href="#" class="footer-button" aria-label="Staff Management">
+                <div class="footer-circle">
+                    <i class="fas fa-users"></i>
+                </div>
                 <span class="footer-text">Staff</span>
             </a>
-            <a href="#" class="footer-button">
-                <div class="footer-circle"><i class="fas fa-truck"></i></div>
+
+            <!-- Suppliers Button -->
+            <a href="#" class="footer-button" aria-label="Suppliers">
+                <div class="footer-circle">
+                    <i class="fas fa-truck"></i>
+                </div>
                 <span class="footer-text">Suppliers</span>
             </a>
-            <a href="#" class="footer-button">
-                <div class="footer-circle"><i class="fas fa-user-friends"></i></div>
+
+            <!-- Customers Button -->
+            <a href="#" class="footer-button" aria-label="Customers">
+                <div class="footer-circle">
+                    <i class="fas fa-user-friends"></i>
+                </div>
                 <span class="footer-text">Customers</span>
             </a>
         </div>
     </div>
 
-    <script>
-        // Toggle visibility of the Business Dropdown
-        document.getElementById('businessBtn').addEventListener('click', function () {
-            const dropdown = document.getElementById('businessDropdown');
-            const userDropdown = document.getElementById('userDropdown');
-            userDropdown.style.display = 'none';
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        });
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
-        // Toggle visibility of the User Dropdown
-        document.getElementById('userBtn').addEventListener('click', function () {
-            const dropdown = document.getElementById('userDropdown');
-            const businessDropdown = document.getElementById('businessDropdown');
-            businessDropdown.style.display = 'none';
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function (event) {
-            const businessBtn = document.getElementById('businessBtn');
-            const userBtn = document.getElementById('userBtn');
-            const businessDropdown = document.getElementById('businessDropdown');
-            const userDropdown = document.getElementById('userDropdown');
-
-            if (!businessBtn.contains(event.target) && !businessDropdown.contains(event.target)) {
-                businessDropdown.style.display = 'none';
-            }
-            if (!userBtn.contains(event.target) && !userDropdown.contains(event.target)) {
-                userDropdown.style.display = 'none';
-            }
-        });
-
-        // Toggle visibility of the footer buttons
-        const toggleFooterBtn = document.getElementById('toggleFooterBtn');
-        const footerButtons = document.getElementById('footerButtons');
-
-        toggleFooterBtn.addEventListener('click', function () {
-            const isHidden = footerButtons.style.display === 'none';
-            footerButtons.style.display = isHidden ? 'flex' : 'none';
-            toggleFooterBtn.textContent = isHidden ? 'v' : '^';
-        });
-
-        // Initialize footer buttons to be visible
-        footerButtons.style.display = 'flex';
-    </script>
+    <!-- Preload Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
 </body>
 </html>
