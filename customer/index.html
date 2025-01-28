@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Customer Management">
+    <meta name="theme-color" content="#780000">
+    <title>Customer Management</title>
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">Customer Management</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Add Customer Button -->
+        <button id="addCustomerBtn" class="add-customer-btn">+ Add Customer</button>
+
+        <!-- Customer List -->
+        <div id="customerList" class="customer-list">
+            <!-- Customer details will be dynamically added here -->
+        </div>
+
+        <!-- Floating Add Customer Form -->
+        <div id="addCustomerForm" class="add-customer-form">
+            <h3>Add Customer Details</h3>
+            <input type="text" id="customerName" placeholder="Customer Name" required>
+            <input type="text" id="customerMobile" placeholder="Mobile Number" required>
+            <textarea id="customerNote" placeholder="Short Note (Optional)"></textarea>
+            <button id="submitCustomerBtn">Submit</button>
+        </div>
+
+        <!-- Customer Details Screen -->
+        <div id="customerDetailsScreen" class="customer-details-screen">
+            <h2 id="customerDetailsName"></h2>
+            <div id="customerEntries">
+                <!-- Entries will be dynamically added here -->
+            </div>
+            <div class="action-buttons">
+                <button id="moneyReceivedBtn" class="green-btn">Money Received</button>
+                <button id="moneyPendingBtn" class="red-btn">Money Pending</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
