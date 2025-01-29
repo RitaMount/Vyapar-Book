@@ -41,6 +41,11 @@ body {
     justify-content: center;
     position: relative;
     z-index: 1001;
+    transition: background-color 0.3s ease;
+}
+
+.circle-button:hover {
+    background: #e9ecef;
 }
 
 .dropdown {
@@ -88,6 +93,20 @@ body {
     min-height: calc(100vh - 140px);
 }
 
+.content-placeholder {
+    text-align: center;
+    padding: 2rem;
+}
+
+.content-placeholder h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.content-placeholder p {
+    color: #666;
+}
+
 .footer {
     background-color: #780000;
     padding: 0.5rem;
@@ -95,6 +114,7 @@ body {
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: 999;
 }
 
 .footer-buttons {
@@ -110,6 +130,12 @@ body {
     text-decoration: none;
     color: #f8f9fa;
     text-align: center;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.footer-button:hover {
+    transform: translateY(-5px);
 }
 
 .footer-circle {
@@ -121,15 +147,21 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.footer-button:hover .footer-circle {
+    background: #e9ecef;
 }
 
 .footer-circle i {
-    color: black;
+    color: #333;
     font-size: 1.2rem;
 }
 
 .footer-text {
     font-size: 0.8rem;
+    line-height: 1.2;
 }
 
 .toggle-footer {
@@ -139,4 +171,9 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-footer:hover {
+    transform: translateY(-2px);
 }
