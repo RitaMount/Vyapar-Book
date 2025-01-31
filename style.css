@@ -1,14 +1,13 @@
+/* MuneemJi/style.css */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
 body {
     background-color: #f8f9fa;
 }
-
 .header {
     background-color: #780000;
     padding: 1rem;
@@ -20,7 +19,6 @@ body {
     width: 100%;
     z-index: 1000;
 }
-
 .logo {
     color: white;
     font-size: 1.5rem;
@@ -28,7 +26,6 @@ body {
     flex: 1;
     text-align: center;
 }
-
 .circle-button {
     width: 40px;
     height: 40px;
@@ -43,11 +40,9 @@ body {
     z-index: 1001;
     transition: background-color 0.3s ease;
 }
-
 .circle-button:hover {
     background: #e9ecef;
 }
-
 .dropdown {
     position: fixed;
     top: 70px;
@@ -59,15 +54,12 @@ body {
     padding: 0.5rem;
     z-index: 1000;
 }
-
 .dropdown.right {
     right: 1rem;
 }
-
 .dropdown.left {
     left: 1rem;
 }
-
 .dropdown-item {
     display: block;
     padding: 0.8rem 1rem;
@@ -76,37 +68,30 @@ body {
     border-radius: 4px;
     transition: background-color 0.2s;
 }
-
 .dropdown-item:hover {
     background: #f8f9fa;
 }
-
 .divider {
     height: 1px;
     background: #e9ecef;
     margin: 0.5rem 0;
 }
-
 .main-content {
     margin-top: 70px;
     padding: 1rem;
     min-height: calc(100vh - 140px);
 }
-
 .content-placeholder {
     text-align: center;
     padding: 2rem;
 }
-
 .content-placeholder h1 {
     color: #333;
     margin-bottom: 1rem;
 }
-
 .content-placeholder p {
     color: #666;
 }
-
 .footer {
     background-color: #780000;
     padding: 0.5rem;
@@ -116,7 +101,6 @@ body {
     text-align: center;
     z-index: 999;
 }
-
 .footer-buttons {
     display: flex;
     justify-content: space-around;
@@ -125,7 +109,6 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
-
 .footer-button {
     text-decoration: none;
     color: #f8f9fa;
@@ -133,11 +116,9 @@ body {
     padding: 0.5rem;
     transition: transform 0.2s ease;
 }
-
 .footer-button:hover {
     transform: translateY(-5px);
 }
-
 .footer-circle {
     width: 50px;
     height: 50px;
@@ -149,21 +130,17 @@ body {
     margin-bottom: 0.5rem;
     transition: background-color 0.3s ease;
 }
-
 .footer-button:hover .footer-circle {
     background: #e9ecef;
 }
-
 .footer-circle i {
     color: #333;
     font-size: 1.2rem;
 }
-
 .footer-text {
     font-size: 0.8rem;
     line-height: 1.2;
 }
-
 .toggle-footer {
     border: none;
     background: none;
@@ -173,7 +150,34 @@ body {
     margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
 }
-
 .toggle-footer:hover {
     transform: translateY(-2px);
+}
+
+/* Auth Styles */
+.hidden {
+    display: none;
+}
+.content-placeholder form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+.content-placeholder input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.content-placeholder button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #780000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.content-placeholder button:hover {
+    background-color: #5a0000;
 }
