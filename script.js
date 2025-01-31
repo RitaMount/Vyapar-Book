@@ -1,7 +1,6 @@
-// MuneemJi/script.js
 document.addEventListener('DOMContentLoaded', function() {
-    const supabaseUrl = 'https://vxyztjpclxfcnlphhuwg.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4eXp0anBjbHhmY25scGhodXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNTIwMzQsImV4cCI6MjA1MzcyODAzNH0.H-ni1o02i93i0uigvUXsA3h5duYpztr3mDvMVGJn8IQ';
+    const supabaseUrl = 'YOUR_SUPABASE_URL';
+    const supabaseKey = 'YOUR_SUPABASE_KEY';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // DOM Elements
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     footerButtons.style.maxHeight = '150px';
 
     // Handle login
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    document.getElementById('login').addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Handle signup
-    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    document.getElementById('signup').addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
@@ -99,5 +98,28 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             alert(error.message);
         }
+    });
+
+    // Show user profile
+    document.getElementById('myProfile').addEventListener('click', async () => {
+        const user = supabase.auth.user();
+        if (user) {
+            alert(`Name: ${user.name}\nEmail: ${user.email}`);
+        } else {
+            alert('Please log in first.');
+        }
+    });
+
+    // Toggle between login and signup forms
+    document.getElementById('signupLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('loginForm').classList.add('hidden');
+        document.getElementById('signupForm').classList.remove('hidden');
+    });
+
+    document.getElementById('loginLink').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('signupForm').classList.add('hidden');
+        document.getElementById('loginForm').classList.remove('hidden');
     });
 });
