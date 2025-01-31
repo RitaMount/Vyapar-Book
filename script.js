@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const supabaseUrl = 'YOUR_SUPABASE_URL';
-    const supabaseKey = 'YOUR_SUPABASE_KEY';
+    const supabaseUrl = 'https://vxyztjpclxfcnlphhuwg.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4eXp0anBjbHhmY25scGhodXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNTIwMzQsImV4cCI6MjA1MzcyODAzNH0.H-ni1o02i93i0uigvUXsA3h5duYpztr3mDvMVGJn8IQ';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // DOM Elements
