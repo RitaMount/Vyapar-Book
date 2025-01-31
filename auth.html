@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MuneemJi - Login/Signup</title>
-    <link rel="stylesheet" href="/MuneemJi/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <div class="logo">MuneemJi</div>
-    </div>
-    <div class="main-content">
+    </header>
+
+    <main class="main-content">
         <div id="loginForm" class="content-placeholder">
             <h1>Login</h1>
             <form id="login">
@@ -20,6 +21,7 @@
             </form>
             <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
         </div>
+
         <div id="signupForm" class="content-placeholder hidden">
             <h1>Sign Up</h1>
             <form id="signup">
@@ -30,8 +32,8 @@
             </form>
             <p>Already have an account? <a href="#" id="loginLink">Login</a></p>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/module/index.js"></script>
-    <script src="/MuneemJi/script.js"></script>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
