@@ -1,125 +1,87 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    const { createClient } = supabase;
     const supabaseUrl = 'https://vxyztjpclxfcnlphhuwg.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4eXp0anBjbHhmY25scGhodXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNTIwMzQsImV4cCI6MjA1MzcyODAzNH0.H-ni1o02i93i0uigvUXsA3h5duYpztr3mDvMVGJn8IQ';
+    const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // DOM Elements
-    const businessBtn = document.getElementById('businessBtn');
-    const userBtn = document.getElementById('userBtn');
-    const businessDropdown = document.getElementById('businessDropdown');
     const userDropdown = document.getElementById('userDropdown');
-    const toggleFooterBtn = document.getElementById('toggleFooterBtn');
-    const footerButtons = document.getElementById('footerButtons');
+    const myProfile = document.getElementById('myProfile');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginSignupLink = document.getElementById('loginSignup');
 
-    // Toggle business dropdown
-    businessBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isVisible = businessDropdown.style.display === 'block';
-        // Hide user dropdown
-        userDropdown.style.display = 'none';
-        // Toggle business dropdown
-        businessDropdown.style.display = isVisible ? 'none' : 'block';
-    });
+    async function checkAuth() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+            loginSignupLink.style.display = 'none';
+            myProfile.style.display = 'block';
+            logoutBtn.style.display = 'block';
+        } else {
+            myProfile.style.display = 'none';
+            logoutBtn.style.display = 'none';
+        }
+    }
+    checkAuth();
 
-    // Toggle user dropdown
-    userBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isVisible = userDropdown.style.display === 'block';
-        // Hide business dropdown
-        businessDropdown.style.display = 'none';
-        // Toggle user dropdown
-        userDropdown.style.display = isVisible ? 'none' : 'block';
-    });
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function() {
-        businessDropdown.style.display = 'none';
-        userDropdown.style.display = 'none';
-    });
-
-    // Prevent dropdown from closing when clicking inside it
-    businessDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
-    userDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
-
-    // Toggle footer
-    toggleFooterBtn.addEventListener('click', function() {
-        const isHidden = footerButtons.style.maxHeight === '0px';
-        footerButtons.style.maxHeight = isHidden ? '150px' : '0px';
-        toggleFooterBtn.textContent = isHidden ? 'v' : '^';
-    });
-
-    // Initialize footer
-    footerButtons.style.maxHeight = '150px';
-
-    // Handle login
-    document.getElementById('login').addEventListener('submit', async (e) => {
+    // Login Form
+    document.getElementById('login')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        try {
-            const { user, error } = await supabase.auth.signIn({
-                email,
-                password
-            });
-            if (error) throw error;
-            console.log('User logged in:', user);
-            // Redirect to dashboard or another page after successful login
-            window.location.href = '/MuneemJi/index.html';
-        } catch (error) {
-            alert(error.message);
-        }
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) return alert(error.message);
+        window.location.href = '/MuneemJi/index.html';
     });
 
-    // Handle signup
-    document.getElementById('signup').addEventListener('submit', async (e) => {
+    // Signup Form
+    document.getElementById('signup')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        try {
-            const { user, error } = await supabase.auth.signUp({
-                email,
-                password
-            });
-            if (error) throw error;
-            console.log('User signed up:', user);
-            // Save additional user details to the database
-            await supabase.from('Users').insert([
-                { name, email, password }
-            ]);
-            // Redirect to dashboard or another page after successful signup
-            window.location.href = '/MuneemJi/index.html';
-        } catch (error) {
-            alert(error.message);
+        const { data, error } = await supabase.auth.signUp({ email, password });
+        if (error) return alert(error.message);
+        
+        if (data.user) {
+            await supabase.from('Users').insert([{ id: data.user.id, name, email }]);
         }
+        window.location.href = '/MuneemJi/index.html';
     });
 
-    // Show user profile
-    document.getElementById('myProfile').addEventListener('click', async () => {
-        const user = supabase.auth.user();
+    // Profile View
+    myProfile?.addEventListener('click', async () => {
+        const { data: { user } } = await supabase.auth.getUser();
         if (user) {
-            alert(`Name: ${user.name}\nEmail: ${user.email}`);
+            alert(`Name: ${user.user_metadata?.name || 'Unknown'}\nEmail: ${user.email}`);
         } else {
             alert('Please log in first.');
         }
     });
 
-    // Toggle between login and signup forms
-    document.getElementById('signupLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('loginForm').classList.add('hidden');
-        document.getElementById('signupForm').classList.remove('hidden');
+    // Logout
+    logoutBtn?.addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/MuneemJi/auth.html';
     });
 
-    document.getElementById('loginLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('signupForm').classList.add('hidden');
-        document.getElementById('loginForm').classList.remove('hidden');
+    // UI Enhancements
+    document.querySelectorAll('.circle-button').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            btn.style.backgroundColor = '#ddd';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.backgroundColor = '#f8f9fa';
+        });
+    });
+
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.backgroundColor = '#e9ecef';
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.backgroundColor = 'white';
+        });
     });
 });
